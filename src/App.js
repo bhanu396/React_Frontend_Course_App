@@ -5,8 +5,14 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './components/MenuComponent.js';
 import { DISHES } from './shared/dishes';
 
-function App() {
-    const dishes = DISHES;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: DISHES
+    };
+  }
+    render(){
       return (
         <div className="App">
           <Navbar dark color="primary">
@@ -14,25 +20,10 @@ function App() {
               <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
             </div>
           </Navbar>
-          <Menu dishes={dishes} />
+          <Menu dishes={this.state.dishes} />
         </div>
       );
 }
-
-// function App() {
-//   this.state = {
-//     dishes: DISHES
-//   };
-//   return (
-//       <div className="App">
-//         <Navbar dark color="primary">
-//           <div className="container">
-//             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-//           </div>
-//         </Navbar>
-//         <Menu />
-//       </div>
-//     );
-// }
+}
 
 export default App;
