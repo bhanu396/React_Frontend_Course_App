@@ -6,7 +6,7 @@ import CommentForm from './CommentFormComponent';
 
 
 
-    function RenderComments({comments}) {
+function RenderComments({comments, addComment, dishId}) {
         if (comments == null) {
             return (<div></div>)
         }
@@ -30,7 +30,7 @@ import CommentForm from './CommentFormComponent';
                 <h4> Comments </h4>
                 <ul className='list-unstyled'>
                     {cmnts}
-                    <CommentForm></CommentForm>
+                    <CommentForm dishId={dishId} addComment={addComment} />
                 </ul>
 
             </div>
@@ -78,7 +78,9 @@ import CommentForm from './CommentFormComponent';
                 </div>
                 <div className="row">
                     <RenderDish dish={props.dish} />
-                    <RenderComments comments={props.comments} />
+                    <RenderComments comments={props.comments}
+                    addComment={props.addComment}
+                    dishId={props.dish.id} />
                 </div>
                 </div>
             );
